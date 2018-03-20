@@ -2,12 +2,16 @@
   <title> View Posts </title>
 
 <body>
-<p>For some reason this doesnt print out the usernames!(Worked with Kurt, edited and remaking, still doesnt work.)</p><br>
+<!--<p>For some reason this doesnt print out the usernames!(Worked with Kurt, edited and remaking, still doesnt work.)</p><br>
 <p>(Existing names added manually into the options menu for testing)</p>
-<p>(GoldnTest= 2 posts, GoldnGod = no posts)</p>
+<p>(GoldnTest= 2 posts, GoldnGod = no posts)</p>-->
   <form action="ViewUserPosts.php" method="post">
     <select name="name">
       <?php
+
+			error_reporting(E_ALL);
+			ini_set("display_errors", 1);
+			
         $mysqli = new $mysqli("mysql.eecs.ku.edu", "s756t371", "ieb3ohgu", "s756t371");
 
         $query = "SELECT user_id From Users";
@@ -19,9 +23,9 @@
           {
             $user = $row["user_id"];
 
-            echo "<option>".$user."</option>";
-						echo "<option> GoldnTest</option>";
-						echo "<option> GoldnGod</option>";
+            echo "<option value=\"$user\">$user</option>";
+						//echo "<option> GoldnTest</option>";
+						//echo "<option> GoldnGod</option>";
           }
         }
 
@@ -37,4 +41,5 @@
 </body>
 
 </html>
+
 
