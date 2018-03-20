@@ -2,28 +2,24 @@
   <title> View Posts </title>
 
 <body>
-<!--<p>This file refuses to read the php snippet as a php(Worked with Kurt, edited and remaking, still doesnt work.)</p><br>
+<p>This file refuses to read the php snippet as a php(Worked with Kurt, edited and remaking, still doesnt work.)</p><br>
 <p>(Existing names added manually into the options menu for testing)</p>
-<p>(GoldnTest= 2 posts, GoldnGod = no posts)</p>-->
-  <form action="ViewUserPosts.php" method="post">
-    <select name="name">
+<p>(GoldnTest= 2 posts, GoldnGod = no posts)</p>
 
+  <form action="ViewUserPosts.php" method="post">
+		<select name="name">
 <?php
 
-			error_reporting(E_ALL);
-			ini_set("display_errors", 1);
+/* check connection */
+if ($mysqli->connect_errno)
+{
+    printf("Connect failed: %s\n", $mysqli->connect_error);
+    exit();
+}
 
-        $mysqli = new $mysqli("mysql.eecs.ku.edu", "s756t371", "ieb3ohgu", "s756t371");
+        $mysqli = new mysqli("mysql.eecs.ku.edu", "s756t371", "ieb3ohgu", "s756t371");
 
         $query = "SELECT user_id From Users";
-
-
-				if($myspli->connect_errno)
-				{
-					printf("Connection failed: %s\n", $mysqli->connect_error);
-
-					die();
-				}
 
         if($result = $mysqli->query($query))
         {
@@ -32,8 +28,8 @@
             $user = $row["user_id"];
 
             echo "<option>".$user."</option>";
-						//echo "<option> GoldnTest</option>";
-						<!--echo "<option> GoldnGod</option>";-->
+						echo "<option> GoldnTest</option>";
+						echo "<option> GoldnGod</option>";
           }
         }
 
@@ -45,7 +41,6 @@
 
     <input type="submit" value="View User's Posts">
   </form>
-
 </body>
 
 </html>
