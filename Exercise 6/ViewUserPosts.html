@@ -1,39 +1,33 @@
 <html>
-
-<head>
-
-	<title>View posts</title>
-
-</head>
+  <title> View Posts </title>
 
 <body>
 
+  <form action="ViewUserPosts.php" method="post">
+    <select name="name">
+      <?php
+        $mysqli = new $mysqli("mysql.eecs.ku.edu", "s756t371", "ieb3ohgu", "s756t371");
 
-		<form action="ViewUserPosts.php" method="post">
-
-			<select name="name">
-
-			<?php
-				$mysqli = new mysqli("mysql.eecs.ku.edu", "s756t371", "ieb3ohgu", "s756t371");
-				$query = "SELECT user_id FROM Users";
+        $query = "SELECT user_id From Users";
 				$result = $mysqli->query($query);
 
-				if($result->num_rows > 0)
-				{
-					while($row = $result->fetch_assoc())
-					{
-						echo "<option>".$row["user_id"]."</option>";
-					}
-				}
+        if($result->num_rows>0)
+        {
+          while($row = $result->fetch_assoc())
+          {
+            $user = $row["user_id"];
+            echo "<option value='$user'>".$user."</option>";
+          }
+        }
 
-			?>
+        $mysqli->close();
 
-			</select>
+      ?>
 
-			<input type="submit" value="View User's Posts"></input>
+    </select>
 
-		</form>
-
+    <input type="submit" value="View User's Posts">
+  </form>
 
 </body>
 
