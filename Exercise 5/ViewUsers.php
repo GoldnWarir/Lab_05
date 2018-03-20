@@ -19,7 +19,8 @@ if ($mysqli->connect_errno)
       echo  "<th>Users</th>";
 
       while ($row = $result->fetch_assoc())
-      { echo "<tr>";
+      {
+        echo "<tr>";
         echo "<td>".$row["user_id"]."</td>";
         echo "</tr></center>";
       }
@@ -28,7 +29,7 @@ if ($mysqli->connect_errno)
     }
     else
     {
-      echo "This Error";
+      echo "No users to fill in the table!";
     }
 
   //Close the connection
