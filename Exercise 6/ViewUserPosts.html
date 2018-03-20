@@ -2,7 +2,9 @@
   <title> View Posts </title>
 
 <body>
-
+<p>For some reason this doesnt print out the usernames!(Worked with Kurt, edited and remaking, still doesnt work.)</p><br>
+<p>(Existing names added manually into the options menu for testing)</p>
+<p>(GoldnTest= 2 posts, GoldnGod = no posts)</p>
   <form action="ViewUserPosts.php" method="post">
     <select name="name">
       <?php
@@ -16,7 +18,10 @@
           while($row = $result->fetch_assoc())
           {
             $user = $row["user_id"];
-            echo "<option value='$user'>".$user."</option>";
+
+            echo "<option>".$user."</option>";
+						echo "<option> GoldnTest</option>";
+						echo "<option> GoldnGod</option>";
           }
         }
 
@@ -32,3 +37,4 @@
 </body>
 
 </html>
+
